@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Stop the container if it exists
+if [ "$(docker ps -q -f name=funny-bot)" ]; then
+    echo "Stopping container..."
+    docker stop funny-bot
+    docker rm funny-bot
+    echo "Bot stopped and container removed"
+else
+    echo "No running bot container found"
+fi
