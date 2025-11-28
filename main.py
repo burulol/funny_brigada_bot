@@ -39,7 +39,7 @@ async def brigada(message):
             f'fa ceva util {message.author.mention}',
             f'kys {message.author.mention}',
             f'iar ia AB vacanta',
-            f'stai ca vrea AB shaorma'
+            f'stai ca vrea AB shaorma',
             f'{message.author.mention} e gay'
         ]
 
