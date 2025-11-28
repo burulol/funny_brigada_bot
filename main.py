@@ -30,7 +30,7 @@ async def brigada(message):
         messages = [
             f'{message.author.mention} ia-ti un job, ai dat ping de {count[message.author.id]} ori 💀',
             f'{message.author.mention} esti labubu',
-            f'vote kick {message.author.mention}',
+            f'vote kick {message.author.mention} 1/5',
             f'unemployment final boss ^',
             f'mergi la somn {message.author.mention}',
             f'bruh {message.author.mention}',
@@ -40,7 +40,10 @@ async def brigada(message):
             f'kys {message.author.mention}',
             f'iar ia AB vacanta',
             f'stai ca vrea AB shaorma',
-            f'{message.author.mention} e gay'
+            f'{message.author.mention} e gay',
+            f'stai ca-i AB la baie',
+            f'https://tenor.com/view/job-job-application-jobless-gif-2757097081210871087',
+            f'https://tenor.com/view/give-me-money-no-money-no-money-meme-money-please-beggar-emoji-gif-7109609360249280076'
         ]
 
         await message.channel.send(
