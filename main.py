@@ -31,14 +31,16 @@ async def brigada(message):
             f'{message.author.mention} ia-ti un job, ai dat ping de {count[message.author.id]} ori 💀',
             f'{message.author.mention} esti labubu',
             f'vote kick {message.author.mention}',
-            f'unemplyment final boss ^',
+            f'unemployment final boss ^',
             f'mergi la somn {message.author.mention}',
             f'bruh {message.author.mention}',
             f'taci {message.author.mention} ca iara pierdem',
             f'treci la curs {message.author.mention}',
             f'fa ceva util {message.author.mention}',
             f'kys {message.author.mention}',
-            f'iar ia AB vacanta'
+            f'iar ia AB vacanta',
+            f'stai ca vrea AB shaorma'
+            f'{message.author.mention} e gay'
         ]
 
         await message.channel.send(
