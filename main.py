@@ -81,4 +81,6 @@ async def on_message(message: discord.Message):
 with open('token', 'r') as f:
     token = f.read().strip()
 
+# test
+
 bot.run(token)
