@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from random import randint
+from count import increment_count, load_count
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -9,7 +10,7 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-ROLE_ID = 1335605844955500647
+ROLE_ID = 1519426189155106837
 
 count = {}
 
@@ -23,12 +24,10 @@ async def brigada(message):
     role_ids = [role.id for role in mentioned_roles]
 
     if ROLE_ID in role_ids:
-        await message.add_reaction('💀')
-
-        count[message.author.id] = count.get(message.author.id, 0) + 1
+        increment_count(message.author.id)
 
         messages = [
-            f'{message.author.mention} ia-ti un job, ai dat ping de {count[message.author.id]} ori 💀',
+            f'{message.author.mention} ia-ti un job, ai dat ping de {load_count().get(message.author.id, 0)} ori 💀',
             f'{message.author.mention} esti labubu',
             f'vote kick {message.author.mention} 1/5',
             f'unemployment final boss ^',
@@ -54,22 +53,22 @@ async def ranking(message):
 
     if not bot.user.id in [member.id for member in message.mentions]:
         return
-    
-    if not count:
+
+    if load_count() == {}:
         await message.channel.send('n-a dat nimeni ping inca')
         return
 
-    sorted_counts = sorted(count.items(), key=lambda item: item[1], reverse=True)
+    sorted_counts = sorted(load_count().items(), key=lambda item: item[1], reverse=True)
     ranking_message = 'Ping count:\n'
     for user_id, ping_count in sorted_counts:
-        user = bot.get_user(user_id)
+        user = bot.get_user(int(user_id))
         ranking_message += f'{user.name}: {ping_count} pings\n'
 
     await message.channel.send(ranking_message)
 
 @bot.event
 async def on_message(message: discord.Message):
-    if message.author.bot:  
+    if message.author.bot:
         return
 
     await brigada(message)
