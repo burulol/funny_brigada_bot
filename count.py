@@ -1,12 +1,15 @@
 import json
 from pathlib import Path
 
-FILE = Path("count.json")
+FILE = Path(__file__).parent / "count.json"
 
 def increment_count(user_id):
+    # JSON keys are always strings, so normalize ids to str
+    user_id = str(user_id)
     d = load_count()
     d[user_id] = d.get(user_id, 0) + 1
     save(d)
+    return d[user_id]
 
 def save(d: dict):
     FILE.write_text(json.dumps(d, indent=2))

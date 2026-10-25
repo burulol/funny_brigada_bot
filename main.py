@@ -24,10 +24,10 @@ async def brigada(message):
     role_ids = [role.id for role in mentioned_roles]
 
     if ROLE_ID in role_ids:
-        increment_count(message.author.id)
+        pings = increment_count(message.author.id)
 
         messages = [
-            f'{message.author.mention} ia-ti un job, ai dat ping de {load_count().get(message.author.id, 0)} ori 💀',
+            f'{message.author.mention} ia-ti un job, ai dat ping de {pings} ori 💀',
             f'{message.author.mention} esti labubu',
             f'vote kick {message.author.mention} 1/5',
             f'unemployment final boss ^',
@@ -62,7 +62,8 @@ async def ranking(message):
     ranking_message = 'Ping count:\n'
     for user_id, ping_count in sorted_counts:
         user = bot.get_user(int(user_id))
-        ranking_message += f'{user.name}: {ping_count} pings\n'
+        name = user.name if user else user_id
+        ranking_message += f'{name}: {ping_count} pings\n'
 
     await message.channel.send(ranking_message)
 
